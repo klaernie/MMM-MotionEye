@@ -12,12 +12,12 @@ module.exports = NodeHelper.create({
 		console.log("Starting module: " + this.name);
 
 		var self = this;
-		this.expressApp.get('/motioneye/hide/:id*?', function (req, res) {
+		this.expressApp.get('/motioneye/hide/{:id}', function (req, res) {
 			console.log("Hide registered: " + req.params.id);
 			res.send('Hide registered: ' + req.params.id);
 			self.sendSocketNotification("MotionEyeHide", req.params.id);
 		});
-		this.expressApp.get('/motioneye/:id*?', function (req, res) {
+		this.expressApp.get('/motioneye/{:id}', function (req, res) {
 			console.log("Motion registered: " + req.params.id);
 			res.send('Motion registered: ' + req.params.id);
 			self.sendSocketNotification("MotionEyeShow", req.params.id);
